@@ -1,0 +1,143 @@
+import React from 'react';
+import NImage from 'next/image';
+import banner from '@/assets/images/banner.webp';
+import logo from '@/assets/images/Logo_Energia_Seguridade_2 1.png';
+import icon from '@/assets/images/check_circle.png';
+import SubscribeButton, { Props as ButtonProps } from '../SubscribeButton';
+import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
+
+const HeroSection: React.FC<Record<string, unknown>> = ({}) => {
+  const Image = NImage as any;
+
+  const buttonStyles = {
+    type: 'red',
+    borderRadius: '6px',
+    className: 'custom-subscribe-button'
+  } as ButtonProps;
+
+  return (
+    <section className="relative bg-[#F9AB35] h-[630px] flex flex-col lg:flex-row justify-between">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={banner}
+          alt="Dois profissionais de costas em uma área de construção civil com vários metais. Estão usando chapéu de proteção individual."
+          layout="fill"
+          objectFit="cover"
+          className="w-full h-full"
+        />
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+      </div>
+      <div className="absolute z-10 w-full lg:w-[716px] flex flex-col">
+        <div className="bg-[#FFF] lg:w-[210px] w-[120px] h-[168px] lg:h-[250px] flex justify-center items-end lg:ml-16 ml-8 rounded-br-3xl rounded-bl-3xl">
+          <div className="lg:w-[196px] lg:h-[210px] w-[96px] h-[104px] mb-5 flex items-center justify-center">
+            <Image src={logo} alt="logo" width={165} height={180} />
+          </div>
+        </div>
+        <div className="ml-8 lg:ml-16 mt-10">
+          <h1 className="font-inter text-5xl xl:text-5xl text-2xl font-semibold leading-tight text-[#FFF]">
+            SEGURO DE VIDA
+          </h1>
+          <h4 className="font-inter text-3xl xl:text-2xl text-lg font-semibold leading-tight text-[#FFF]">
+            PARA EMPRESAS DA CONSTRUÇÃO CIVIL
+          </h4>
+        </div>
+        <div className="ml-8 lg:ml-16 mt-2">
+          <p className="font-inter lg:max-w-xl 2xl:text-[24px] xl:text-[20px] text-[16px] font-normal lg:leading-[32px] text-[#FFF] mt-2 pr-8 lg:pr-0 whitespace-nowrap">
+            Atenção – Seguro Obrigatório para o setor, conforme convenção coletiva!
+          </p>
+        </div>
+
+        {/* Mobile */}
+        <div className="lg:hidden mt-10 pl-5">
+          <div className="flex justify-end items-end">
+            <Image
+              src={banner}
+              alt="Dois profissionais de costas em uma área de construção civil com vários metais. Estão usando chapéu de proteção individual."
+              layout="responsive"
+              width={361}
+              height={204}
+              className="rounded-tl-[36px] rounded-bl-[36px]"
+            />
+          </div>
+        </div>
+
+        {/* Mobile */}
+        <div className="lg:hidden">
+          <Link href="/seguro-coletivo/" passHref legacyBehavior>
+            <div className="ml-16 mt-8">
+              <SubscribeButton
+                gtmID="pme-hero-contratar"
+                clickId="pme-hero-contratar"
+                textSize="text-xl"
+                widthButton="px-12"
+                className="custom-subscribe-button"
+                {...buttonStyles}
+              >
+                <span className="subscribe-button-content">
+                  CONTRATAR <FaArrowRight className="inline" />
+                </span>
+              </SubscribeButton>
+            </div>
+          </Link>
+        </div>
+
+        {/* Desktop */}
+        <div className="hidden lg:block">
+          <Link href="/seguro-coletivo/" passHref legacyBehavior>
+            <div className="ml-8 lg:ml-16 mt-4">
+              <SubscribeButton
+                gtmID="pme-hero-contratar"
+                clickId="pme-hero-contratar"
+                textSize="text-xl"  // Diminui o tamanho do texto
+                widthButton="px-4" // Diminui o padding do botão
+                className="custom-subscribe-button"
+                {...buttonStyles}
+              >
+                <span className="subscribe-button-content">
+                  CONTRATAR <FaArrowRight className="inline" />
+                </span>
+              </SubscribeButton>
+            </div>
+          </Link>
+        </div>
+
+      </div>
+
+      {/* Desktop */}
+      <div className="hidden lg:block">
+        <div className="absolute 2xl:bottom-[-95px] 2xl:left-[12rem] xl:bottom-[-95px] xl:left-[3rem] w-[574px] h-[166px] rounded-[24px] bg-[#404040] flex justify-center items-center">
+          <div className="flex flex-row justify-center items-center">
+            <div className="w-[150px] h-[120px] ml-2 flex justify-center items-center">
+              <Image src={icon} alt="checked" width={80} height={80} />
+            </div>
+            <div className="ml-2">
+              <p className="font-inter text-[19px] font-normal text-[#FFF] mr-10">
+                Proteção obrigatória para atividades profissionais que envolvem
+                riscos diários.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="hidden lg:block">
+        <div className="absolute 2xl:bottom-[-95px] 2xl:right-[12rem] xl:bottom-[-95px] xl:right-[3rem] w-[574px] h-[166px] rounded-[24px] bg-[#404040] flex justify-center items-center">
+          <div className="flex flex-row justify-center items-center">
+            <div className="w-[150px] h-[120px] ml-2 flex justify-center items-center">
+              <Image src={icon} alt="checked" width={80} height={80} />
+            </div>
+            <div className="ml-2">
+              <p className="font-inter text-[19px] font-normal text-[#FFF]">
+                Ato de responsabilidade que demonstra preocupação com o
+                bem-estar dos colaboradores e seus parentes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
